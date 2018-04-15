@@ -14,7 +14,7 @@ def get_dynamoDB() -> Policy:
     awacs.aws.Statement(
       Action = [ PutItem ],
       Effect = awacs.aws.Allow,
-      Resource = [ "arn:aws:dynamodb:::table/IoTSensorDataGamma" ]
+      Resource = [ Sub("arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/IoTSensorDataGamma") ]
     )
   ]
   policyDoc = awacs.aws.Policy( Statement = statements )
