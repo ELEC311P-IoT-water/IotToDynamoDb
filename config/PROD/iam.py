@@ -8,13 +8,12 @@ from troposphere.iam import Role, Policy
 from awacs.dynamodb import PutItem
 import awacs.aws
 
-
 def get_dynamoDB() -> Policy:
   statements = [
     awacs.aws.Statement(
       Action = [ PutItem ],
       Effect = awacs.aws.Allow,
-      Resource = [ "arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/IoTSensorDataPROD" ]
+      Resource = [ Sub("arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/IoTSensorDataPROD") ]
     )
   ]
   policyDoc = awacs.aws.Policy( Statement = statements )
