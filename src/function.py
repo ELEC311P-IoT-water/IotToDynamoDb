@@ -4,7 +4,7 @@ import boto3
 
 def lambda_handler(event, context):
     timestamp = time() # time of arrival
-    table = s.environ["tablename"]
+    table = os.environ["tablename"]
     client = boto3.client("dynamodb")
 
     item = {}
