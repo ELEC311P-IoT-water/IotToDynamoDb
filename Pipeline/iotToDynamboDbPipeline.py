@@ -41,10 +41,7 @@ build_stage = getBuild(
 pipeline_stages.append(build_stage)
 
 for s in stages:
-  pipeline_stages.append(
-    getDeploy( template, cf_artifact, s.capitalize()
-               , deploy_pkg_artifact, source_code, getTest)
-  )
+  pipeline_stages.append(getDeploy( template, cf_artifact, s.capitalize(), deploy_pkg_artifact))
 
 PROD = getDeploy(template, cf_artifact, "PROD", deploy_pkg_artifact)
 
